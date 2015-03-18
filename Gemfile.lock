@@ -1,4 +1,10 @@
 GIT
+  remote: https://github.com/JoostVanAverbeke/collection-json.git
+  revision: 83bfa34cc025cd7c7c0dc8ef6268e2d46081f660
+  specs:
+    collection-json (0.1.7)
+
+GIT
   remote: https://github.com/JoostVanAverbeke/faker_extensions.git
   revision: 4605f839be1ac7b0b96a2ed8eaf2c247d6ec3455
   specs:
@@ -64,6 +70,7 @@ GEM
     minitest (4.7.5)
     multi_json (1.8.4)
     pg (0.17.0)
+    pg (0.17.0-x86-mingw32)
     polyglot (0.3.3)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -135,12 +142,15 @@ GEM
     uglifier (2.1.2)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    will_paginate (3.0.4)
 
 PLATFORMS
   ruby
+  x86-mingw32
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
+  collection-json!
   factory_girl (~> 4.5.0)
   faker (~> 1.4.3)
   faker_extensions!
@@ -154,3 +164,4 @@ DEPENDENCIES
   sdoc
   turbolinks
   uglifier (>= 1.3.0)
+  will_paginate

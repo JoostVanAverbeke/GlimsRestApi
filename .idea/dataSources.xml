@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="2259254998">
+    <data-source source="LOCAL" name="Rails GlimsRestApi: development" uuid="e482ce1c-c033-416f-85db-160f76d621e4">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/GlimsRestApi_development</jdbc-url>
+      <user-name>postgres</user-name>
+      <user-password>df98df99dfdadfd8dfc3dfc4dfcedfc6dfcf</user-password>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails GlimsRestApi: test" uuid="ce54ef09-403b-47bf-921f-6c7d72079b6d">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/GlimsRestApi_test</jdbc-url>
+      <user-name>postgres</user-name>
+      <user-password>df98df99dfdadfd8dfc3dfc4dfcedfc6dfcf</user-password>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails GlimsRestApi: production" uuid="a2bd5d62-8dd2-476a-af8e-a90259da257f">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:GlimsRestApi_production</jdbc-url>
+      <user-name>postgres</user-name>
+      <user-password>df98df99dfdadfd8dfc3dfc4dfcedfc6dfcf</user-password>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+

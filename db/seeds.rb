@@ -8,4 +8,4 @@ require 'factory_girl'
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 FactoryGirl.find_definitions
 
-10000.times { FactoryGirl.create(:random_patient)}
+100000.times { FactoryGirl.create(:random_patient)}

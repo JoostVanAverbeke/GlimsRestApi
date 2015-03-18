@@ -27,11 +27,18 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# pagination
+gem 'will_paginate'
+
 # Faker, a port of Data::Faker from Perl, is used to easily generate fake data: names, addresses, phone numbers, etc.
 gem 'faker', '~> 1.4.3'
 
 # Faker extensions
 gem 'faker_extensions', git: 'https://github.com/JoostVanAverbeke/faker_extensions.git'
+
+# Lightweight gem for building Collection+JSON responses.
+# gem 'collection-json', '~> 0.1.7'
+gem 'collection-json', git: 'https://github.com/JoostVanAverbeke/collection-json.git'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

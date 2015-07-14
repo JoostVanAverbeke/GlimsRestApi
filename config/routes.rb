@@ -64,6 +64,7 @@ GlimsRestApi::Application.routes.draw do
     namespace :v1 do
       resources :patients, only: :index
       get 'patients/count', to: 'patients#count'
+      post 'login', to: 'login#login'
     end
   end
 

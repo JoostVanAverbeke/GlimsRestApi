@@ -17,6 +17,7 @@ class Api::V1::PatientsController < Api::V1::BaseController
 # NEW    patient_collection = PatientCollection.new(patients, current_page: @page_to_i, total_items: patients.total_entries,
 #                                               total_records: Patient.count, page_size: @limit.to_i)
 # NEW respond_with patient_collection.to_json
+    puts "response = #{the_response.to_json}"
     respond_with the_response.to_json
 #    respond_with patients.to_json(only: [:surname, :first_name, :birth_date ])
   end

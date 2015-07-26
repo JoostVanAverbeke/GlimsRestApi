@@ -1,4 +1,6 @@
 class Api::V1::PatientsController < Api::V1::BaseController
+# TODO(JVA)
+# force_ssl if: :ssl_configured?
 
   before_action :set_limit, :set_sort_column, :set_sort_direction
 
@@ -29,5 +31,9 @@ class Api::V1::PatientsController < Api::V1::BaseController
 
   def set_sort_direction
     @sort_direction = params[:sort_direction] ||= :asc
+  end
+
+  def ssl_configured?
+    !Rails.env.development?
   end
 end

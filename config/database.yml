@@ -61,3 +61,6 @@ production:
   pool: 5
   username: postgres
   password: 23prindle
+
+  host: localhost
+  port: 5432

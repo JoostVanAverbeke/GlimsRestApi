@@ -9,7 +9,6 @@ describe Api::V1::LoginController do
     end
 
     context "Invalid routes" do
-
     end
   end
 end

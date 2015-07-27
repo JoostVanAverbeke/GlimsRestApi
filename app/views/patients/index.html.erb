@@ -1,0 +1,73 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Patients</h1>
+
+<br />
+
+<div id="grid"></div>
+
+<script>
+    $(document).ready(function () {
+        var crudServiceBaseUrl = "/patients",
+                dataSource = new kendo.data.DataSource({
+                    transport: {
+                        read:  {
+                            url: crudServiceBaseUrl,
+                            dataType: "json"
+                        },
+                        update: {
+                            url: function(patient) {
+                                return crudServiceBaseUrl + "/" + patient.id;
+                            },
+                            dataType: "json",
+                            contentType: "application/json",
+                            type: "PUT"
+                        },
+                        destroy: {
+                            url: function(patient) {
+                                return crudServiceBaseUrl + "/" + patient.id
+                            },
+                            dataType: "json",
+                            type: "DELETE"
+                        },
+                        create: {
+                            url: crudServiceBaseUrl,
+                            dataType: "json",
+                            contentType: "application/json",
+                            type: "POST"
+                        },
+                        parameterMap: function(patient, type) {
+                            if (type === "create" || type === "update") {
+                                return JSON.stringify({ patient: patient });
+                            }
+                        }
+                    },
+                    pageSize: 30,
+                    schema: {
+                        model: {
+                            id: "id",
+                            fields: {
+                                surname: { editable: true },
+                                first_name: { editable: true }
+//                                amount: { type: "number", validation: { required: true } }
+
+                            }
+                        }
+                    }
+                });
+
+        $("#grid").kendoGrid({
+            dataSource: dataSource,
+            navigatable: true,
+            pageable: true,
+            height: 400,
+            toolbar: ["create", "save", "cancel"],
+            columns: [
+                { field: "surname", width: "150px" },
+                { field: "first_name", width: "150px" },
+//                { field: "amount", format: "{0:c}", width: "150px" },
+                { command: "destroy", title: " ", width: "110px" }],
+            editable: true
+        });
+    });
+</script>

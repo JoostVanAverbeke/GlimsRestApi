@@ -13,9 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150222094402) do
 
-  create_table "patients", force: true do |t|
-    t.string   "surname"
-    t.string   "first_name"
+  create_table "patients", force: :cascade do |t|
+    t.string   "surname",    limit: 255
+    t.string   "first_name", limit: 255
     t.date     "birth_date"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '4.2.3'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails', '~> 5.0.3'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -19,13 +19,16 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 4.0.4'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
+
+# Twitter's Bootstrap, converted to Sass and ready to drop into Rails or Compass
+gem 'bootstrap-sass', '~> 3.3.5.1'
 
 # Faker, a port of Data::Faker from Perl, is used to easily generate fake data: names, addresses, phone numbers, etc.
 gem 'faker', '~> 1.4.3'
@@ -43,8 +46,8 @@ group :doc do
 end
 
 group :test do
-  gem 'rspec', '~> 3.2.0'
-  gem 'rspec-rails', '~> 3.2.1'
+  gem 'rspec', '~> 3.3.0'
+  gem 'rspec-rails', '~> 3.3.3'
   gem 'factory_girl', '~> 4.5.0'
 end
 # Use ActiveModel has_secure_password

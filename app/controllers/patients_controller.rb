@@ -2,15 +2,17 @@ class PatientsController < ApplicationController
   layout 'kendo_ui_application'
 
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
+  before_action :set_page_size, only: [:index]
+  before_action :set_page, only: [:index]
 
   # GET /patients
   # GET /patients.json
   def index
-    @patients = Patient.all.order(:surname)
-
+    puts "params = #{params}"
+    @patients = Patient.paginate(page: @page, per_page: @page_size).order(:surname)
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @patients }
+      format.json { render json: { patients: @patients, total: Patient.count} }
     end
 
   end
@@ -89,6 +91,14 @@ class PatientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def patient_params
-      params[:patient].permit(:surname, :firPatientst_name, :birth_date)
+      params[:patient].permit(:id, :surname, :first_name, :birth_date)
+    end
+
+    def set_page_size
+      @page_size = (params[:pageSize] ? params[:pageSize] : 30)
+    end
+
+    def set_page
+      @page = (params[:page] ? params[:page] : 1)
     end
 end

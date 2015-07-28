@@ -8,63 +8,80 @@
 
 <script>
     $(document).ready(function () {
-        var crudServiceBaseUrl = "/patients",
-                dataSource = new kendo.data.DataSource({
-                    transport: {
-                        read:  {
-                            url: crudServiceBaseUrl,
-                            dataType: "json"
-                        },
-                        update: {
-                            url: function(patient) {
-                                return crudServiceBaseUrl + "/" + patient.id;
-                            },
-                            dataType: "json",
-                            contentType: "application/json",
-                            type: "PUT"
-                        },
-                        destroy: {
-                            url: function(patient) {
-                                return crudServiceBaseUrl + "/" + patient.id
-                            },
-                            dataType: "json",
-                            type: "DELETE"
-                        },
-                        create: {
-                            url: crudServiceBaseUrl,
-                            dataType: "json",
-                            contentType: "application/json",
-                            type: "POST"
-                        },
-                        parameterMap: function(patient, type) {
-                            if (type === "create" || type === "update") {
-                                return JSON.stringify({ patient: patient });
-                            }
-                        }
+        var crudServiceBaseUrl = "/patients";
+        var dataSource = new kendo.data.DataSource({
+            transport: {
+                read:  {
+                    url: crudServiceBaseUrl,
+                    type: "get",
+                    dataType: "json"
+                 },
+                update: {
+                    url: function(patient) {
+                        return crudServiceBaseUrl + "/" + patient.id;
                     },
-                    pageSize: 30,
-                    schema: {
-                        model: {
-                            id: "id",
-                            fields: {
-                                surname: { editable: true },
-                                first_name: { editable: true }
+                    dataType: "json",
+                    contentType: "application/json",
+                    type: "PUT"
+                },
+                destroy: {
+                    url: function(patient) {
+                        return crudServiceBaseUrl + "/" + patient.id
+                    },
+                    dataType: "json",
+                    type: "DELETE"
+                },
+                create: {
+                    url: crudServiceBaseUrl,
+                    dataType: "json",
+                    contentType: "application/json",
+                    type: "POST"
+                },
+                parameterMap: function(data, type) {
+                    if (type === "create" || type === "update") {
+                        return JSON.stringify({ patient: data });
+                    } else if (type === "read") {
+                        var values = {};
+                        values["page"] = data.page;
+                        values["pageSize"] = data.pageSize;
+                        return values;
+                    }
+                }
+            },
+            serverPaging: true,
+            serverFiltering: true,
+            serverSorting: true,
+            pageSize: 15,
+            schema: {
+                data: function(response) {
+                    return response.patients;
+                },
+                total: function(response) {
+                    return response.total;
+                },
+                model: {
+                    id: "id",
+                    fields: {
+                        surname: { editable: true },
+                        first_name: { editable: true },
+                        birth_date: { editable: true, type: "date" }
 //                                amount: { type: "number", validation: { required: true } }
 
-                            }
-                        }
                     }
-                });
+                }
+            }
+        });
 
         $("#grid").kendoGrid({
             dataSource: dataSource,
             navigatable: true,
             pageable: true,
-            height: 400,
+//            height: 800,
             toolbar: ["create", "save", "cancel"],
             columns: [
                 { field: "surname", width: "150px" },
                 { field: "first_name", width: "150px" },
+                { field: "birth_date", title: "Birth date", format: "{0:dd/MM/yyyy}"},
 //                { field: "amount", format: "{0:c}", width: "150px" },
                 { command: "destroy", title: " ", width: "110px" }],
             editable: true

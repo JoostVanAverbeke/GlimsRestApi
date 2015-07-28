@@ -30,8 +30,22 @@ gem 'jbuilder', '~> 1.2'
 # Twitter's Bootstrap, converted to Sass and ready to drop into Rails or Compass
 gem 'bootstrap-sass', '~> 3.3.5.1'
 
+# will_paginate provides a simple API for performing paginated queries with Active Record, DataMapper and Sequel,
+# and includes helpers for rendering pagination links in Rails, Sinatra and Merb web apps.
+gem 'will_paginate', '~> 3.0.7'
+
 # Faker, a port of Data::Faker from Perl, is used to easily generate fake data: names, addresses, phone numbers, etc.
 gem 'faker', '~> 1.4.3'
+
+# To resolve the error:
+# in `rescue in create_default_data_source': No source of timezone data could be found. (TZInfo::DataSourceNotFound)
+# you need to include the gem file gem 'tzinfo-data' in the Gemfile
+gem 'tzinfo-data', '~> 1.2015.5'
+
+# To resolve the error:
+# ActionView::Template::Error (TypeError: Object doesn't support this property or method):
+# go back to version coffee-script-source 1.8.0
+gem 'coffee-script-source', '1.8.0'
 
 # Faker extensions
 gem 'faker_extensions', git: 'https://github.com/JoostVanAverbeke/faker_extensions.git'

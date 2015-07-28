@@ -4,12 +4,13 @@ class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
   before_action :set_page_size, only: [:index]
   before_action :set_page, only: [:index]
+  before_action :set_sorting, only: [:index]
 
   # GET /patients
   # GET /patients.json
   def index
     puts "params = #{params}"
-    @patients = Patient.paginate(page: @page, per_page: @page_size).order(:surname)
+    @patients = Patient.paginate(page: @page, per_page: @page_size).order("#{@sort_column} #{@sort_direction}")
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: { patients: @patients, total: Patient.count} }
@@ -100,5 +101,15 @@ class PatientsController < ApplicationController
 
     def set_page
       @page = (params[:page] ? params[:page] : 1)
+    end
+
+    def set_sorting
+      if (params[:sort] && params[:sort]["0"])
+        @sort_column = (params[:sort]["0"][:field] ? params[:sort]["0"][:field] : :surname)
+        @sort_direction = (params[:sort]["0"][:dir] ? params[:sort]["0"][:dir] : :asc)
+      else
+        @sort_column = :surname
+        @sort_direction = :asc
+      end
     end
 end

@@ -44,6 +44,14 @@
                         var values = {};
                         values["page"] = data.page;
                         values["pageSize"] = data.pageSize;
+//                        alert(data.sort[0].field);
+                        if (typeof data.sort !== "undefined" && data.sort !== null) {
+                            var sort = [];
+                            for (var i = 0; i < data.sort.length; i++) {
+                                sort.push({field: data.sort[i].field, dir: data.sort[i].dir });
+                            }
+                            values["sort"] = sort;
+                        }
                         return values;
                     }
                 }
@@ -76,6 +84,8 @@
             dataSource: dataSource,
             navigatable: true,
             pageable: true,
+            sortable: true,
+            filterable: true,
 //            height: 800,
             toolbar: ["create", "save", "cancel"],
             columns: [
